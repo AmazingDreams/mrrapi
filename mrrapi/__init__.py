@@ -108,14 +108,14 @@ class api:
         :param rig_id: id
         :return: Returns the detail of rig_id
         """
-        return self.api_call('rigs', {'method': 'rent', 'profileid': str(rentalprofile), 'length':str(hours), 'id': str(rig_id)})
+        return self.api_call('rig', {'method': 'rent', 'profileid': str(rentalprofile), 'length':str(hours), 'id': str(rig_id)})
 
     def rig_detail(self, rig_id):
         """
         :param rig_id: id
         :return: Returns the detail of rig_id
         """
-        return self.api_call('rigs', {'method': 'detail', 'id': str(rig_id)})
+        return self.api_call('rig', {'method': 'detail', 'id': str(rig_id)})
 
     def rig_list(self, min_hash=0, max_hash=0, min_cost=0, max_cost=0, rig_type='scrypt', showoff='no', order=None,
                  orderdir=None, page=None):
@@ -146,7 +146,7 @@ class api:
             params.update({'orderdir': str(orderdir)})
         if page is not None:
             params.update({'page': str(page)})
-        return self.api_call('rigs', params)
+        return self.api_call('rig', params)
 
     def rig_listall(self, min_hash=0, max_hash=0, min_cost=0, max_cost=0, rig_type='scrypt', showoff='no', order=None, orderdir=None):
         rigs = self.rig_list(min_hash=min_hash, max_hash=max_hash, min_cost=min_cost, max_cost=max_cost, rig_type=rig_type, showoff=showoff, order=order, orderdir=orderdir)
@@ -209,5 +209,5 @@ class api:
                 params.update({'hash_type': str(hash_type)})
             else:
                 return 'Must define hashrate when hash_type is defined'
-        return self.api_call('rigs', params)
+        return self.api_call('rig', params)
 
